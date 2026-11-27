@@ -1,8 +1,7 @@
-#include "fixture.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "fixture.h"
 
 int main(void)
 {
@@ -14,8 +13,10 @@ int main(void)
         f.grant.expires_at != 200 || !f.token.active ||
         f.token.agent != f.registration.agent || f.token.grant != f.grant.id ||
         f.token.expires_at != 100 ||
-        strcmp(f.token.value, "synthetic-test-token") != 0) {
+        strcmp(f.token.value, "synthetic-test-token") != 0)
+	{
         return EXIT_FAILURE;
     }
+
     return puts("PASS: synthetic fixture records") < 0 ? EXIT_FAILURE : EXIT_SUCCESS;
 }
